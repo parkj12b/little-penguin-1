@@ -1,0 +1,29 @@
+From 5b4b70fc78327375638d1d3dc891546867ba76c1 Mon Sep 17 00:00:00 2001
+From: Minseo Park <minsepar@student.42seoul.kr>
+Date: Mon, 23 Jun 2025 12:00:15 +0000
+Subject: [PATCH] Makefile: add custom tag to EXTRAVERSION
+
+This patch adds a custom suffix to the kernel version string to
+differentiate locally build kernels.
+
+Signed-off-by: Minseo Park <minsepar@student.42seoul.kr>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index f884dfe10246..fe35557328ef 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ VERSION = 6
+ PATCHLEVEL = 16
+ SUBLEVEL = 0
+-EXTRAVERSION = -rc3
++EXTRAVERSION = -thor_version
+ NAME = Baby Opossum Posse
+ 
+ # *DOCUMENTATION*
+-- 
+2.49.0
+
