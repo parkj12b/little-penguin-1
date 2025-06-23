@@ -3,35 +3,34 @@
 #include <linux/delay.h>
 #include <linux/slab.h>
 
-int do_work(int *my_int, int retval) {
-	int x;
-	int y = *my_int;
-	int z;
+MODULE_LICENSE("GPL");
+MODULE_DESCRIPTION("Kernel module that delays 10 micro seconds for x \
+	times given by the programmer");
+MODULE_AUTHOR("Minseo Park <minsepar@student.42seoul.kr>");
+MODULE_VERSION("1.0");
 
-	for (x = 0; x < my_int; ++x)
-	{
+static void do_work(int *my_int)
+{
+	int i;
+
+	for (i = 0; i < *my_int; ++i) {
 		udelay(10);
 	}
 
-	if (y < 10)
-		/* That was a long sleep, tell userspace about it */
-		pr_info("We slept a long time!");
-	
-	z = x * y;
-	return z;
-		return 1;
+	*my_int = (*my_int + 1) * *my_int;
 }
 
-int my_init(void)
+static int __init my_init(void)
 {
 	int x = 10;
 
-	x = do_work(&x, x);
-	return x;
+	do_work(&x);
+	return 0;
 }
 
-void my_exit(void)
+static void __exit my_exit(void)
 {
+	pr_info("Cleaning up module\n");
 }
 
 module_init(my_init);
