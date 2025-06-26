@@ -1,0 +1,10 @@
+[   41.621543] audit: type=1327 audit(1750829280.272:15): proctitle=2F62696E2F6C6F67696E002D2D
+[   41.745969] audit: type=1006 audit(1750829280.404:16): pid=590 uid=0 subj=kernel old-auid=4294967295 auid=1000 tty=(none) old-ses=4294967295 ses=2 res=1
+[   41.745973] audit: type=1300 audit(1750829280.404:16): arch=c000003e syscall=1 success=yes exit=4 a0=7 a1=7ffdb43bd480 a2=4 a3=0 items=0 ppid=1 pid=590 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=2 comm="(systemd)" exe="/usr/lib/systemd/systemd-executor" subj=kernel key=(null)
+[   41.745975] audit: type=1327 audit(1750829280.404:16): proctitle="(systemd)"
+[   46.730720] systemd-hostnam (530) used greatest stack depth: 12248 bytes left
+[ 2844.558192] clocksource: Long readout interval, skipping watchdog check: cs_nsec: 1061119389 wd_nsec: 1061118608
+[27875.928569] hello: registered with dynamic minor 123
+[27875.928573] Hello World!
+[29877.697579] Cleaning up module.
+[29884.508686] fortytwo: registered with dynamic minor 123

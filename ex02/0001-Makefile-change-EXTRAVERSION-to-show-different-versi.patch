@@ -1,0 +1,26 @@
+From 465f19e35eb88f269c848eb1061f171a53174374 Mon Sep 17 00:00:00 2001
+From: minsepar <minsepar@student.42seoul.kr>
+Date: Mon, 23 Jun 2025 16:30:47 +0000
+Subject: [PATCH] Makefile: change EXTRAVERSION to show different version
+
+Signed-off-by: minsepar <minsepar@student.42seoul.kr>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index c1cd1b5fc269..c61990ac53db 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ VERSION = 6
+ PATCHLEVEL = 15
+ SUBLEVEL = 0
+-EXTRAVERSION =
++EXTRAVERSION = -thor_version
+ NAME = Baby Opossum Posse
+ 
+ # *DOCUMENTATION*
+-- 
+2.49.0
+

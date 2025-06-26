@@ -1,0 +1,9 @@
+reading from /dev/fortytwo:
+minsepar
+
+redirect minsepar to /dev/fortytwo:
+0
+
+redirect not_minsepar to /dev/fortytwo:
+test.sh: line 11: echo: write error: Invalid argument
+

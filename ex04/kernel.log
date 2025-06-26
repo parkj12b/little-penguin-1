@@ -1,0 +1,50 @@
+[  866.004971] Hello World!
+[  866.005048] USB Keyboard plugged in
+[  866.005049] Hello World!
+[  866.017134] input: VirtualBox USB Tablet as /devices/pci0000:00/0000:00:06.0/usb2/2-1/2-1:1.0/0003:80EE:0021.000B/input/input23
+[  866.017558] hid-generic 0003:80EE:0021.000B: input,hidraw0: USB HID v1.10 Mouse [VirtualBox USB Tablet] on usb-0000:00:06.0-1/input0
+[  866.025948] hid-generic 0003:0C45:B23C.000C: hiddev96,hidraw1: USB HID v1.11 Device [Gaming Keyboard] on usb-0000:00:06.0-2/input2
+[  866.025988] usbcore: registered new interface driver usbhid
+[  866.025990] usbhid: USB HID core driver
+[  905.273368] usb 2-2: USB disconnect, device number 6
+[  905.273418] USB Keyboard removed
+[  905.273419] Cleaning up module.
+[  905.273481] USB Keyboard removed
+[  905.273482] Cleaning up module.
+[  909.734670] usb 2-2: new full-speed USB device number 7 using ohci-pci
+[  910.342753] usb 2-2: New USB device found, idVendor=0c45, idProduct=b23c, bcdDevice= 1.08
+[  910.342757] usb 2-2: New USB device strings: Mfr=0, Product=2, SerialNumber=0
+[  910.342758] usb 2-2: Product: Gaming Keyboard
+[  910.345893] USB Keyboard plugged in
+[  910.345895] Hello World!
+[  910.345969] USB Keyboard plugged in
+[  910.345969] Hello World!
+[  910.355052] hid-generic 0003:0C45:B23C.000D: hiddev96,hidraw1: USB HID v1.11 Device [Gaming Keyboard] on usb-0000:00:06.0-2/input2
+[  918.332732] usb 2-2: USB disconnect, device number 7
+[  918.332768] USB Keyboard removed
+[  918.332769] Cleaning up module.
+[  918.332819] USB Keyboard removed
+[  918.332820] Cleaning up module.
+[  925.938079] usb 2-2: new full-speed USB device number 8 using ohci-pci
+[  926.486381] usb 2-2: New USB device found, idVendor=0c45, idProduct=b23c, bcdDevice= 1.08
+[  926.486386] usb 2-2: New USB device strings: Mfr=0, Product=2, SerialNumber=0
+[  926.486387] usb 2-2: Product: Gaming Keyboard
+[  926.489599] USB Keyboard plugged in
+[  926.489600] Hello World!
+[  926.489689] USB Keyboard plugged in
+[  926.489689] Hello World!
+[  926.498509] hid-generic 0003:0C45:B23C.000E: hiddev96,hidraw1: USB HID v1.11 Device [Gaming Keyboard] on usb-0000:00:06.0-2/input2
+[ 1141.874169] usb 2-2: USB disconnect, device number 8
+[ 1141.874204] USB Keyboard removed
+[ 1141.874206] Cleaning up module.
+[ 1141.874297] USB Keyboard removed
+[ 1141.874299] Cleaning up module.
+[ 1148.467457] usb 2-2: new full-speed USB device number 9 using ohci-pci
+[ 1149.459027] usb 2-2: New USB device found, idVendor=0c45, idProduct=b23c, bcdDevice= 1.08
+[ 1149.459033] usb 2-2: New USB device strings: Mfr=0, Product=2, SerialNumber=0
+[ 1149.459034] usb 2-2: Product: Gaming Keyboard
+[ 1149.462355] USB Keyboard plugged in
+[ 1149.462358] Hello World!
+[ 1149.462389] USB Keyboard plugged in
+[ 1149.462390] Hello World!
+[ 1149.471317] hid-generic 0003:0C45:B23C.000F: hiddev96,hidraw1: USB HID v1.11 Device [Gaming Keyboard] on usb-0000:00:06.0-2/input2
