@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.dbclient-js": "javascript",
+    "tpp": "c++",
+    "kernel.h": "c",
+    "module.h": "c"
+  }
+}

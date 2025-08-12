@@ -6,11 +6,6 @@
 #include <linux/miscdevice.h>
 #include <linux/uaccess.h>
 
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Minseo Park");
-MODULE_DESCRIPTION("fortytwo that accepts minsepar");
-MODULE_VERSION("0.1");
-
 #define LOGIN "minsepar\n"
 #define LOGIN_LEN (sizeof(LOGIN) - 1)
 
@@ -52,7 +47,7 @@ static struct miscdevice hello_dev = {
 };
 
 
-static int __init fortytwo_init(void)
+static int __init fortytwo_init(void) 
 {
 	int ret = misc_register(&hello_dev);
 
@@ -65,7 +60,7 @@ static int __init fortytwo_init(void)
 	return ret;
 }
 
-static void __exit fortytwo_exit(void)
+static void __exit fortytwo_exit(void) 
 {
 	misc_deregister(&hello_dev);
 	pr_info("Cleaning up module.\n");
@@ -73,3 +68,9 @@ static void __exit fortytwo_exit(void)
 
 module_init(fortytwo_init);
 module_exit(fortytwo_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Minseo Park");
+MODULE_DESCRIPTION("fortytwo that accepts minsepar");
+MODULE_VERSION("0.1");
+

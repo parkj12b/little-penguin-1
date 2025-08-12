@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-2.0
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -12,17 +13,18 @@ MODULE_VERSION("0.1");
 #define USB_KBD_SUBCLASS 0x01
 #define USB_KBD_PROTOCOL 0x01
 
-static int kbd_probe(struct usb_interface *interface, const struct usb_device_id *id)
+static int kbd_probe(struct usb_interface *interface,
+	const struct usb_device_id *id)
 {
-	printk(KERN_INFO "USB Keyboard plugged in\n");
-	printk(KERN_INFO "Hello World!\n");
+	pr_info("USB Keyboard plugged in\n");
+	pr_info("Hello World!\n");
 	return 0;
 }
 
 static void kbd_disconnect(struct usb_interface *interface)
 {
-	printk(KERN_INFO "USB Keyboard removed\n");
-	printk(KERN_INFO "Cleaning up module.\n");
+	pr_info("USB Keyboard removed\n");
+	pr_info("Cleaning up module.\n");
 }
 
 static struct usb_device_id kbd_table[] = {

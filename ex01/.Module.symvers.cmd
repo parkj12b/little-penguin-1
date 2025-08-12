@@ -1,1 +1,1 @@
-savedcmd_Module.symvers :=  /home/minsepar/linux/scripts/mod/modpost -M          -o Module.symvers -n -T modules.order -i /home/minsepar/linux/Module.symvers -e 
+savedcmd_Module.symvers :=  /usr/src/linux-headers-6.14.0-27-generic/scripts/mod/modpost -M -m -b -x -a      -o Module.symvers -T modules.order -i /usr/src/linux-headers-6.14.0-27-generic/Module.symvers -e 

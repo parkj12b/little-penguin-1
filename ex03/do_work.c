@@ -1,11 +1,11 @@
+// SPDX-License-Identifier: GPL-2.0
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/delay.h>
 #include <linux/slab.h>
 
 MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("Kernel module that delays 10 micro seconds for x \
-	times given by the programmer");
+MODULE_DESCRIPTION("Kernel module that delays 10 micro seconds for x times given by the programmer");
 MODULE_AUTHOR("Minseo Park <minsepar@student.42seoul.kr>");
 MODULE_VERSION("1.0");
 
@@ -13,9 +13,8 @@ static void do_work(int *my_int)
 {
 	int i;
 
-	for (i = 0; i < *my_int; ++i) {
+	for (i = 0; i < *my_int; ++i)
 		udelay(10);
-	}
 
 	*my_int = (*my_int + 1) * *my_int;
 }
