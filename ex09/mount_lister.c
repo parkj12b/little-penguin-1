@@ -2,56 +2,77 @@
 #include <linux/module.h>    // Required for all modules
 #include <linux/kernel.h>    // Required for KERN_INFO
 #include <linux/sched.h>     // Required for 'current' task struct
-#include <linux/cred.h>      // Required for current_uid()
-#include <linux/uidgid.h>    // Required for from_kuid()
 #include <linux/fs.h>        // Required for file system operations
-#include <linux/mount.h>     // Required for vfsmount
-#include <linux/nsproxy.h>   // Required for namespace proxy
+#include <linux/proc_fs.h>   // Required for /proc filesystem
+#include <linux/seq_file.h>  // Required for sequential file operations
+#include <linux/uaccess.h>   // Required for copy_from_user
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Your Name");
 MODULE_DESCRIPTION("A kernel module to list mount points");
 MODULE_VERSION("0.1");
 
-// The function that runs when the module is loaded
-static int __init list_mounts_init(void) {
-    struct vfsmount *root_mnt;
+// Function to read and display mount information from /proc/mounts
+static void read_proc_mounts(void) {
+    struct file *f;
+    char *buf;
+    loff_t pos = 0;
+    int bytes_read;
     
-    pr_info("🐧 Mount Lister: Module loaded.\n");
-    pr_info("--- Mount Points Information ---\n");
+    // Allocate buffer for reading
+    buf = kmalloc(PAGE_SIZE, GFP_KERNEL);
+    if (!buf) {
+        pr_err("Mount Lister: Failed to allocate buffer\n");
+        return;
+    }
     
-    // Get information about current process
-    pr_info("Mount Lister: Current process PID: %d\n", current->pid);
-    pr_info("Mount Lister: Current process name: %.16s\n", current->comm);
+    // Open /proc/mounts
+    f = filp_open("/proc/mounts", O_RDONLY, 0);
+    if (IS_ERR(f)) {
+        pr_err("Mount Lister: Failed to open /proc/mounts: %ld\n", PTR_ERR(f));
+        kfree(buf);
+        return;
+    }
     
-    // Try to get mount information through current process
-    if (current->fs && current->fs->root.mnt) {
-        root_mnt = current->fs->root.mnt;
-        pr_info("Mount Lister: Found root mount point\n");
+    pr_info("--- Mount Points from /proc/mounts ---\n");
+    
+    // Read the file in chunks
+    while ((bytes_read = kernel_read(f, buf, PAGE_SIZE - 1, &pos)) > 0) {
+        buf[bytes_read] = '\0';  // Null terminate
         
-        // Print basic mount information
-        if (root_mnt->mnt_sb && root_mnt->mnt_sb->s_type) {
-            pr_info("Mount Lister: Root filesystem type: %s\n", 
-                    root_mnt->mnt_sb->s_type->name);
+        // Print each line (mount point)
+        char *line = buf;
+        char *next_line;
+        
+        while ((next_line = strchr(line, '\n')) != NULL) {
+            *next_line = '\0';  // Null terminate the line
+            if (strlen(line) > 0) {
+                pr_info("Mount: %s\n", line);
+            }
+            line = next_line + 1;
         }
         
-        // Try to print mount flags
-        pr_info("Mount Lister: Root mount flags: 0x%x\n", root_mnt->mnt_flags);
-        
-    } else {
-        pr_info("Mount Lister: Could not access root mount information\n");
+        // Handle last line if it doesn't end with newline
+        if (strlen(line) > 0) {
+            pr_info("Mount: %s\n", line);
+        }
     }
     
-    // Try to access namespace information
-    if (current->nsproxy && current->nsproxy->mnt_ns) {
-        pr_info("Mount Lister: Mount namespace accessible\n");
-        // Note: We can't safely iterate through mounts due to kernel restrictions
-        pr_info("Mount Lister: (Direct mount iteration restricted in this kernel version)\n");
-    } else {
-        pr_info("Mount Lister: Mount namespace not accessible\n");
-    }
+    pr_info("--- End of Mount Points ---\n");
     
-    pr_info("--- End of Mount Information ---\n");
+    // Clean up
+    filp_close(f, NULL);
+    kfree(buf);
+}
+
+// The function that runs when the module is loaded
+static int __init list_mounts_init(void) {
+    pr_info("🐧 Mount Lister: Module loaded.\n");
+    pr_info("Mount Lister: Current process PID: %d, name: %.16s\n", 
+            current->pid, current->comm);
+    
+    // Read mount points from /proc/mounts
+    read_proc_mounts();
 
     return 0; // A non-zero return means module failed to load
 }// The function that runs when the module is removed
