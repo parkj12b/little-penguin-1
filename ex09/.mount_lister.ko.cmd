@@ -1,0 +1,1 @@
+savedcmd_mount_lister.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T /usr/src/linux-headers-6.14.0-27-generic/scripts/module.lds -o mount_lister.ko mount_lister.o mount_lister.mod.o .module-common.o
